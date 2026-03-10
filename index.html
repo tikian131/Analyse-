@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Analyse système</title>
+
+<style>
+body{
+background:#0b0b0b;
+color:#33ff33;
+font-family:monospace;
+padding:40px;
+}
+
+#terminal{
+max-width:600px;
+margin:auto;
+}
+
+.line{
+margin:8px 0;
+}
+
+#progressbar{
+width:100%;
+background:#222;
+height:20px;
+margin-top:20px;
+border-radius:10px;
+overflow:hidden;
+}
+
+#bar{
+height:100%;
+width:0%;
+background:#33ff33;
+}
+
+#finish{
+display:none;
+font-size:22px;
+text-align:center;
+margin-top:40px;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal">
+<div class="line">Initialisation du système...</div>
+<div class="line">Connexion au module sécurisé...</div>
+<div class="line">Analyse des fichiers...</div>
+
+<div id="progressbar">
+<div id="bar"></div>
+</div>
+
+<div class="line" id="percent">0%</div>
+
+<div id="finish">
+😄 Relax, c'était une blague !  
+Ton téléphone va parfaitement bien.
+</div>
+</div>
+
+<script>
+
+let progress = 0;
+
+let interval = setInterval(function(){
+
+progress += Math.floor(Math.random()*6)+2;
+
+if(progress >= 100){
+progress = 100;
+clearInterval(interval);
+document.getElementById("finish").style.display="block";
+}
+
+document.getElementById("bar").style.width = progress + "%";
+document.getElementById("percent").innerText = progress + "%";
+
+}, 400);
+
+</script>
+
+</body>
+</html>
